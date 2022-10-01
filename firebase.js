@@ -10,20 +10,12 @@ import { restaurants } from './data';
 LogBox.ignoreLogs(['AsyncStorage has been extracted from react-native core'])
 
 const firebaseConfig = {
-  apiKey: {/* Your firebase config here */ },
-
-  authDomain: {/* Your firebase config here */ },
-
-  projectId: {/* Your firebase config here */ },
-
-  storageBucket: {/* Your firebase config here */ },
-
-  messagingSenderId: {/* Your firebase config here */ },
-
-  appId: {/* Your firebase config here */ },
-  
-
-  
+  apiKey: "AIzaSyDgDMdmkB50rwTRdaMXL4fAdcgYksET2-s",
+  authDomain: "store-delivery-43cb0.firebaseapp.com",
+  projectId: "store-delivery-43cb0",
+  storageBucket: "store-delivery-43cb0.appspot.com",
+  messagingSenderId: "283406701144",
+  appId: "1:283406701144:web:d05dbea3aded6c00d5b02d"
 };
 const firebaseApp = initializeApp(firebaseConfig);
 export default firebaseApp;
