@@ -2,6 +2,7 @@ import { View, Text, Image, ImageBackground, StyleSheet, TouchableOpacity} from 
 import React, { useEffect, useState } from 'react'
 import Onboarding from 'react-native-onboarding-swiper'
 import * as Animatable from "react-native-animatable"
+import { appName } from '../global'
 export default function OnboardingScreen({navigation}) {
   const [splash, setSplash]= useState(true)
   setTimeout(()=>{
@@ -9,8 +10,8 @@ export default function OnboardingScreen({navigation}) {
   }, 4000)
   if(splash)
   return <View style={styles.splash}>
-      <Text style={styles.splashText}>Good{'\n'}
-      <Text style={styles.splashText1}>Foods</Text></Text>
+      <Text style={styles.splashText}>{appName.split(' ')[0]}{'\n'}
+      <Text style={styles.splashText1}>{appName.split(' ')[1]}</Text></Text>
   </View>
   return (
     <ImageBackground style={{ width: "100%", height: "100%" }}

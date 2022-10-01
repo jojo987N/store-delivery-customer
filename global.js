@@ -3,6 +3,7 @@ import * as Location from 'expo-location';
 export const language = "en"
 export const currency = "USD"
 export const apikey = {/*Your Google Api here*/}
+export const appName = "Store Delivery"
 
 export const grey1 = "#e6e6e6"
 
