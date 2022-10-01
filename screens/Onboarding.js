@@ -2,7 +2,7 @@ import { View, Text, Image, ImageBackground, StyleSheet, TouchableOpacity} from 
 import React, { useEffect, useState } from 'react'
 import Onboarding from 'react-native-onboarding-swiper'
 import * as Animatable from "react-native-animatable"
-import { appName } from '../global'
+import { appName, APP_CONSTANT } from '../global'
 export default function OnboardingScreen({navigation}) {
   const [splash, setSplash]= useState(true)
   setTimeout(()=>{
@@ -16,14 +16,14 @@ export default function OnboardingScreen({navigation}) {
   return (
     <ImageBackground style={{ width: "100%", height: "100%" }}
       source={require("../assets/images/onboarding.jpg")}>
-      <Text style={styles.title}>Good{'\n'}Foods</Text>
+      <Text style={styles.title}>{appName.split(' ')[0]}{'\n'}{appName.split(' ')[1]}</Text>
       <Animatable.View style={styles.footer} animation="fadeInUpBig">
       <View style={styles.box}>
-        <Text style={styles.discoverText}>Discover Foods</Text>
+        <Text style={styles.discoverText}>{APP_CONSTANT.DISCOVER_STORES}</Text>
         <TouchableOpacity style={styles.button} onPress={()=>{
           navigation.navigate("SignIn")
         }}>
-          <Text style={styles.buttonText}>Continue</Text>
+          <Text style={styles.buttonText}>{APP_CONSTANT.CONTINUE}</Text>
         </TouchableOpacity>
       </View>
       </Animatable.View>

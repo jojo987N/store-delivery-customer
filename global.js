@@ -7,6 +7,11 @@ export const appName = "Store Delivery"
 
 export const grey1 = "#e6e6e6"
 
+export const APP_CONSTANT = {
+  DISCOVER_STORES: "Discover Stores",
+  CONTINUE: "Continue"
+}
+
 export const colors = {
   buttons: "black",
   grey1: "#43484d",
