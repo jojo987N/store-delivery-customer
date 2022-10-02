@@ -574,6 +574,7 @@ export const stores = [
       "transactions":  [
         "store_reservation",
       ],
+      adsColor: "#800000",
       ads: true,
       theme: "Everyday savings",
       deliveryTime:15,
