@@ -20,22 +20,22 @@ export default function Home({navigation}) {
   const flatlist = useRef(null)
   const searchbar = useRef(null)
   useEffect(()=>{
-    AsyncStorage.getItem("stores").then(value => {
-      if (!value) {
-        // getStoresFromFirebase()
-        getStoresFromFirebase()
-        .then((stores)=>{
-          setStoreData(stores)
-          AsyncStorage.setItem('stores', JSON.stringify(stores))
-        })
-      }else{
-        AsyncStorage.getItem("stores").then(value=>{
-          let stores = JSON.parse(value)
-          setStoreData(stores)
-        }).then(() => {
-        })
-      }
-    }) 
+    setStoreData(stores)
+    // AsyncStorage.getItem("stores").then(value => {
+    //   if (!value) {
+    //     getStoresFromFirebase()
+    //     .then((stores)=>{
+    //       setStoreData(stores)
+    //       AsyncStorage.setItem('stores', JSON.stringify(stores))
+    //     })
+    //   }else{
+    //     AsyncStorage.getItem("stores").then(value=>{
+    //       let stores = JSON.parse(value)
+    //       setStoreData(stores)
+    //     }).then(() => {
+    //     })
+    //   }
+    // }) 
         },[])
   if(!storeData)
   return <Loader />
