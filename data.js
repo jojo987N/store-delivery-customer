@@ -328,7 +328,7 @@ export const stores = [
         "store_reservation",
       ],
       adsColor: "#e0ccff",
-      ads: "$0 Delivery Fee + 5% off with Store Delivery"
+      ads: "$0 Delivery Fee + 5% off with Store Delivery",
       theme: "Popular near you",
       collectTime:10,
       deliveryTime:30,
