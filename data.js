@@ -327,6 +327,8 @@ export const stores = [
       "transactions":  [
         "store_reservation",
       ],
+      adsColor: "#e0ccff",
+      ads: "$0 Delivery Fee + 5% off with Store Delivery"
       theme: "Popular near you",
       collectTime:10,
       deliveryTime:30,
@@ -739,7 +741,6 @@ export const stores = [
         "pickup",
         "delivery",
       ],
-      ads: true,
       theme: "Rewards for you",
       collectTime:15,
       deliveryTime:30,
