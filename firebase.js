@@ -45,7 +45,7 @@ export const getStoresFromFirebase = () => {
   return getDocs(storesCol)
     .then((snapshot) => {
       snapshot.docs.forEach((doc) => {
-        restos.push({
+        stores.push({
           storeId: doc.id,
           ...doc.data()
         })
