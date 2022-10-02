@@ -237,6 +237,7 @@ export const stores = [
         "pickup",
         "delivery",
       ],
+      theme: "Popular near you",
       deliveryTime:15,
       collectTime:5,
       "dishes": [
@@ -326,6 +327,7 @@ export const stores = [
       "transactions":  [
         "store_reservation",
       ],
+      theme: "Popular near you",
       collectTime:10,
       deliveryTime:30,
       "dishes": [
@@ -405,6 +407,7 @@ export const stores = [
         "store_reservation",
         "delivery",
       ],
+      theme: "Popular near you",
       deliveryTime:25,
       collectTime:15,
       "dishes": [
@@ -487,6 +490,7 @@ export const stores = [
         "pickup",
         "delivery",
       ],
+      theme: "Popular near you",
       collectTime:10,
       deliveryTime:20,
       "dishes": [
