@@ -207,7 +207,7 @@ export const stores = [
         "longitude": -122.43200834862841,
         
       },
-      "reward": "10 orders until $15 reward",
+      // "reward": "10 orders until $15 reward",
       "display_phone": "(415) 872-9786",
       "distance": 2730.244177861569,
       "id": "HHtpR0RslupSQ99GIIwW5A",
@@ -294,7 +294,7 @@ export const stores = [
       ],
       "lat": 37.80898821475503,
       "lng": -122.41029651587517,
-      "reward": "5 orders until $15 reward",
+      // "reward": "5 orders until $15 reward",
       "coordinates":  {
         "latitude": 37.80898821475503,
         "longitude": -122.41029651587517,
@@ -373,7 +373,7 @@ export const stores = [
       ],
       "lat": 37.760192883932795,
       "lng": -122.4114188698492,
-      "reward": "10 orders until $15 reward",
+      // "reward": "10 orders until $15 reward",
       "coordinates":  {
         "latitude": 37.760192883932795,
         "longitude": -122.4114188698492,
@@ -457,7 +457,7 @@ export const stores = [
       ],
       "lat": 37.78601,
       "lng": -122.42858,
-      "reward": "4 orders until $9 reward",
+      // "reward": "4 orders until $9 reward",
       "coordinates":  {
         "latitude": 37.78601,
         "longitude": -122.42858,
