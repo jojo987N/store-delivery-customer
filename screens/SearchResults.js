@@ -1,18 +1,18 @@
 import { View, Text, FlatList, StyleSheet, TouchableOpacity} from 'react-native'
 import React, { useEffect, useState } from 'react'
- import { getRestaurantsFromFirebase, searchRestaurantsByCategory } from '../firebase'
+ import { getStoresFromFirebase, searchStoresByCategory } from '../firebase'
 import { categories } from '../data'
-import {RestaurantImage, RestaurantInfo} from '../components/home/RestaurantItems'
+import {StoreImage, StoreInfo} from '../components/home/StoreItems'
 import Loader from './Loader'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export default function SearchResults({route, navigation}) {
-  const [restaurantData, setRestaurantData]= useState()
+  const [storeData, setStoreData]= useState()
   const [loader, setLoader]  = useState(true)
   useEffect(()=>{
-    searchRestaurantsByCategory(route.params.categoryId)
-    .then(restaurantsResult => {
-      setRestaurantData(restaurantsResult)
+    searchStoresByCategory(route.params.categoryId)
+    .then(storesResult => {
+      setStoreData(storesResult)
     })
     navigation.setOptions({title: route.params.name})
   },[])
@@ -25,17 +25,17 @@ export default function SearchResults({route, navigation}) {
     <View>
        <View>
          <FlatList
-         data={restaurantData}
+         data={storeData}
               keyExtractor={(item, index)=>String(index)}
               renderItem={({item})=>{
                 return(
-                   <TouchableOpacity onPress={()=>navigation.navigate("RestaurantDetail",
+                   <TouchableOpacity onPress={()=>navigation.navigate("StoreDetail",
                    {
-                     restaurant: item
+                     store: item
                    })}
                    style={styles.itemContainer}>
-                   <RestaurantImage image={item.image} />
-                  <RestaurantInfo
+                   <StoreImage image={item.image} />
+                  <StoreInfo
                             name={item.name}
                             rating={item.rating}
                             city={item.city}/>

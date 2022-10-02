@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { View, Text, Image, Pressable, Modal, StyleSheet, TouchableOpacity } from "react-native";
 import { useSelector } from "react-redux";
-import OrderItem from '../components/restaurantDetail/OrderItem'
+import OrderItem from '../components/storeDetail/OrderItem'
 import {language, currency}  from '../global'
 
 const OrderListItem = ({ order, index}) => {
@@ -11,7 +11,7 @@ const OrderListItem = ({ order, index}) => {
         <>
             <View style={styles.modalContainer}>
                 <View style={styles.modalCheckoutContainer}>
-                    <Text style={styles.restaurantName}>{order.restaurantName}</Text>
+                    <Text style={styles.storeName}>{order.storeName}</Text>
                         <OrderItem key={index} item={order} />
                     <View style={styles.subtotalContainer}>
                         <Text style={styles.subtotalText}>Subtotal</Text>
@@ -74,7 +74,7 @@ const OrderListItem = ({ order, index}) => {
         <Text style={{
         fontWeight:Platform.OS === "android"?"bold":"600",
         fontSize: 16 }}>
-          {/* {order.Restaurant.name} */}
+          {/* {order.Store.name} */}
           {order.title}
         </Text>
         <Text style={{ marginVertical: 5 }}>3 items &#8226; $38.45</Text>
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
       height: 500,
       borderWidth: 1,
   },
-  restaurantName:{
+  storeName:{
       textAlign: "center",
       fontWeight:Platform.OS === "android"?"bold":"600",
       fontSize: 18,

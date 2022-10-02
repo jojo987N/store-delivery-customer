@@ -1,13 +1,13 @@
 import { View, Text, StyleSheet, StatusBar} from 'react-native'
 import React from 'react'
-import RestaurantItems from '../components/home/RestaurantItems'
+import StoreItems from '../components/home/StoreItems'
 import HeaderTabs from '../components/home/HeaderTabs'
 import HomeHeader from '../components/home/HomeHeader'
 import SearchBar from '../components/home/SearchBar'
 
-export default function RestaurantSearchResults({route, navigation}) {
+export default function StoreSearchResults({route, navigation}) {
 
-    const {restaurantData} = route.params
+    const {storeData} = route.params
   return (
       <View style={styles.container}>
           <View style={{ backgroundColor: "white", padding: 15 }}>
@@ -15,7 +15,7 @@ export default function RestaurantSearchResults({route, navigation}) {
               <HomeHeader navigation={navigation} />
               
           </View>
-          <RestaurantItems restaurantData={restaurantData} navigation={navigation} size="100%" />
+          <StoreItems storeData={storeData} navigation={navigation} size="100%" />
       </View>
     
   )

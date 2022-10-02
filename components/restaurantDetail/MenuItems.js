@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {language, currency}  from '../../global'
 import {} from 'react-native-tab-view'
 import { NavigationContainer } from '@react-navigation/native';
-import { restaurants } from '../../data';
+import { stores } from '../../data';
 import { AntDesign } from '@expo/vector-icons';
 import { getFoods } from '../../firebase';
 import Loader from '../../screens/Loader';
@@ -35,14 +35,14 @@ import { CategoriesContext } from '../../contexts/CategoriesContext';
 export default function MenuItems({route, activeTab, marginLeft, navigation, foodsRef,
 pickup, delivery, setActiveTab, userLocation, mapRef, apikey, scrollEnabled, setScrollEnabled,
 opacity, setCategoriesFood}) {
-  const {restaurant} = route.params
+  const {store} = route.params
   const {categories, setCategories} = useContext(CategoriesContext)
   const [foods, setFoods] = useState([])
    const [loader, setLoader] = useState(false)
 
   useEffect(()=>{
       //  setLoader(true)
-        getFoods(restaurant.restaurantId).then((foods) => {
+        getFoods(store.storeId).then((foods) => {
           // const wait = new Promise(resolve => setTimeout(resolve, 2000));
           // wait.then(()=>{
             setFoods(foods.map(food => ({...food, price: Number(food.price)}) ))
@@ -91,9 +91,9 @@ opacity, setCategoriesFood}) {
                    }}>
                       <FoodImage food={item} marginLeft={marginLeft ? marginLeft:0}
                        />
-                       <QuantityAnimate id={item.id} food={item} restaurant={restaurant}/>
+                       <QuantityAnimate id={item.id} food={item} store={store}/>
                    </View>
-                  <FoodInfo food={item} navigation={navigation} restaurant={restaurant}/>
+                  <FoodInfo food={item} navigation={navigation} store={store}/>
                    </View>
                </View>
                <Divider width={0.5} orientation="vertical" style={{
@@ -132,7 +132,7 @@ const FoodInfo = (props)=>{
     <TouchableOpacity
       style={{ flex: 3, justifyContent: "center", paddingHorizontal: 10 }}
       onPress={() => {
-        props.navigation.navigate("MenuDetailScreen", { food: props.food, restaurant: props.restaurant })
+        props.navigation.navigate("MenuDetailScreen", { food: props.food, store: props.store })
       }}>
       <Text style={styles.titleStyle}>{props.food.name}</Text>
       <Text>{props.food.description}</Text>
@@ -156,7 +156,7 @@ const FoodImage = ({marginLeft,...props})=>(
       }}  />
   </View>
 )
-export const Quantity = ({id, food, restaurant, screen}) => {
+export const Quantity = ({id, food, store, screen}) => {
   const dispatch = useDispatch();
   const styleMds={
     flexDirection: "row",
@@ -175,9 +175,9 @@ export const Quantity = ({id, food, restaurant, screen}) => {
           type: 'ADD_TO_CART',
           payload: {
             ...food,
-            restaurantName: restaurant.name,
-            restaurantImage: restaurant.image,
-            restaurant: restaurant
+            storeName: store.name,
+            storeImage: store.image,
+            store: store
           }
         });
       }}>

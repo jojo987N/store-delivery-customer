@@ -5,14 +5,14 @@ import { CloseModal, Icon } from './FilterModal'
 
 import { Divider, } from 'react-native-elements'
 import DisplayMapview from './DisplayMapview'
-import RestaurantName from './RestaurantName'
-import RestaurantDescription from './RestaurantDescription'
+import StoreName from './StoreName'
+import StoreDescription from './StoreDescription'
 import { CategoriesContext } from '../contexts/CategoriesContext';
 
 
-export default function RestaurantDetailComponent({restaurant, visible, setVisible, userLocation, mapRef, apikey}) {
+export default function StoreDetailComponent({store, visible, setVisible, userLocation, mapRef, apikey}) {
 
-    const {name, image_url, price, review_count, rating, collectTime, address, deliveryTime} = restaurant;
+    const {name, image_url, price, review_count, rating, collectTime, address, deliveryTime} = store;
     
     const {categories, setCategories} = useContext(CategoriesContext)
 
@@ -27,36 +27,36 @@ export default function RestaurantDetailComponent({restaurant, visible, setVisib
   return (
 
       <Modal animationType='slide' visible={visible} >
-        < DisplayMapview height={200} userLocation={userLocation} mapRef={mapRef} apikey={apikey} restaurant={restaurant} />
+        < DisplayMapview height={200} userLocation={userLocation} mapRef={mapRef} apikey={apikey} store={store} />
 
           <View style={styles.container}>
               <View style={styles.header}>
                   <CloseModal setVisible={setVisible} />
-                  <RestaurantName name={name} />
+                  <StoreName name={name} />
               </View>
               <View style={styles.header1}>
-                  <RestaurantDescription
+                  <StoreDescription
                       description={description}
                       style={styles.description}
                   />
               </View>
               <Divider />
-              <RestaurantInfo iconName="location-pin" iconType="Entypo"
+              <StoreInfo iconName="location-pin" iconType="Entypo"
                   iconSize={35} 
                 
                 text={address}
                   />
 
-              <RestaurantInfo iconName="time" iconType="Ionicons"
+              <StoreInfo iconName="time" iconType="Ionicons"
                   iconSize={35} text="Open until 9:00 AM" />
 
-              <RestaurantInfo iconName="star" iconType="FontAwesome"
+              <StoreInfo iconName="star" iconType="FontAwesome"
                   iconSize={35} text={`⭐${rating} (${review_count}+ ratings)`} />
 
-<RestaurantInfo iconName="timer" iconType="Ionicons"
+<StoreInfo iconName="timer" iconType="Ionicons"
                   iconSize={35} text={"Collect time: "+ collectTime+" min"}/>
 
-                  <RestaurantInfo iconName="delivery-dining" iconType="MaterialIcons"
+                  <StoreInfo iconName="delivery-dining" iconType="MaterialIcons"
                   iconSize={35} text={"Delivery time: "+ deliveryTime+" min"}/>
           </View>
 
@@ -65,13 +65,13 @@ export default function RestaurantDetailComponent({restaurant, visible, setVisib
   )
 }
 
-const RestaurantInfo = ({iconName, iconType, iconSize, text})=> {
+const StoreInfo = ({iconName, iconType, iconSize, text})=> {
 
     return (
         <>
-            <View style={styles.restaurantInfo}>
+            <View style={styles.storeInfo}>
                 <Icon name={iconName} type={iconType} size={iconSize} />
-                <Text style={styles.restaurantInfoText}>{text}</Text>
+                <Text style={styles.storeInfoText}>{text}</Text>
             </View>
             <Divider />
         </>
@@ -98,14 +98,14 @@ const styles = StyleSheet.create({
         color: "grey",
         fontSize: 15.5,
     },
-    restaurantInfo: {
+    storeInfo: {
       flexDirection: "row"  ,
       alignItems: "center",
       marginHorizontal: 10,
       marginVertical: 20
 
     },
-    restaurantInfoText: {
+    storeInfoText: {
         marginLeft: 10,
         fontSize: 20
     }

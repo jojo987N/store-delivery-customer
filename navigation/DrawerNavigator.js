@@ -5,9 +5,9 @@ import { Icon } from 'react-native-elements';
 import BusinessConsoleScreen from '../screens/BusinessConsoleScreen';
 import DrawerContent from '../components/DrawerContent';
 import { SearchNavigator } from './Stacks';
-import RestaurantsMapScreen from '../screens/RestaurantsMapScreen';
+import StoresMapScreen from '../screens/StoresMapScreen';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons'
-import RestaurantDetail from '../screens/RestaurantDetail';
+import StoreDetail from '../screens/StoreDetail';
 import Offers from '../screens/Offers'
 import Settings from '../screens/Settings';
 
@@ -24,7 +24,7 @@ export default function DrawerNavigator() {
             name = "BottomTabs"
             component={BottomTabs}
             options={{
-                title: "Restaurants",
+                title: "Stores",
                 drawerIcon: ({focussed, size}) =>(
                   <Icon 
                     type="material-community"
@@ -39,7 +39,7 @@ export default function DrawerNavigator() {
         <Drawer.Screen 
             name = "Pickup"
              initialParams={{visible: false}}
-            component={RestaurantsMapScreen}
+            component={StoresMapScreen}
             options={{
                 title: "Pickup",
                 drawerIcon: ({focussed, size}) =>(

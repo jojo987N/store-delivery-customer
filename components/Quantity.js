@@ -4,7 +4,7 @@ import { grey1 } from '../global'
 import { AntDesign } from '@expo/vector-icons'
 import { useDispatch, useSelector } from 'react-redux'
 
-export default function QuantityAnimate({ id, food, restaurant }) {
+export default function QuantityAnimate({ id, food, store }) {
   const opacity = useState(new Animated.Value(0))[0]
   const marginLeft = useState(new Animated.Value(0))[0]
   const [visible, setVisible] = useState(false)
@@ -76,9 +76,9 @@ export default function QuantityAnimate({ id, food, restaurant }) {
             type: 'ADD_TO_CART',
             payload: {
               ...food,
-              restaurantName: restaurant.name,
-              restaurantImage: restaurant.image,
-              restaurant: restaurant
+              storeName: store.name,
+              storeImage: store.image,
+              store: store
             }
           });
         }}>

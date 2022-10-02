@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-export default function RestaurantName(props) {
+export default function StoreName(props) {
   return (
     <Text style={{
         fontSize: 29,

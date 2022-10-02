@@ -1,12 +1,12 @@
 import { View, Text, useWindowDimensions, Image, ScrollView, Animated, StyleSheet, TouchableOpacity, StatusBar } from 'react-native'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import MapView, { Callout, Marker } from 'react-native-maps'
-import RestaurantItems from '../components/home/RestaurantItems'
+import StoreItems from '../components/home/StoreItems'
 import LottieView from 'lottie-react-native'
-import { RestaurantInfo, RestaurantImage } from '../components/home/RestaurantItems'
+import { StoreInfo, StoreImage } from '../components/home/StoreItems'
 import { location } from '../global'
 import { MaterialIcons } from '@expo/vector-icons';
-import { ArrowBack } from '../components/restaurantDetail/About'
+import { ArrowBack } from '../components/storeDetail/About'
 import SearchBar from '../components/home/SearchBar'
 import BottomSheet from '@gorhom/bottom-sheet'
 import Categories from '../components/home/Categories'
@@ -14,21 +14,21 @@ import { FlatList } from 'react-native-gesture-handler'
 import Reward from '../components/Reward'
 import { getDistanceFromLatLonInKm } from '../utils'
 import { Icon } from 'react-native-elements'
-import { RestaurantsContext } from '../contexts/RestaurantsContext'
+import { StoresContext } from '../contexts/StoresContext'
 import { useSelector } from 'react-redux'
 
 
-export default function RestaurantsMapScreen({ route, navigation }) {
-  const { restaurantData } = useContext(RestaurantsContext)
+export default function StoresMapScreen({ route, navigation }) {
+  const { storeData } = useContext(StoresContext)
   const {lat,lng} = useSelector((state)=>state.userReducer)
   const { width, height } = useWindowDimensions();
   const _map = useRef(null)
-  const restaurantsRef = useRef(null)
+  const storesRef = useRef(null)
   const [visible, setVisible] = useState(route.params.visible)
   const [scrollEnabled, setScrollEnabled] = useState(false)
   const [offset, setOffset] = useState(0)
   const [direction, setDirection] = useState("")
-  const [focus, setFocus] = useState(new Array(restaurantData.length).fill({
+  const [focus, setFocus] = useState(new Array(storeData.length).fill({
     backgroundColor: "white",
     color: "black",
     zIndex: 1,
@@ -67,7 +67,7 @@ export default function RestaurantsMapScreen({ route, navigation }) {
           width: width
         }}
       >
-        <RestaurantMarkers restaurantData={restaurantData} focus={focus} setFocusFunction={setFocusFunction} restaurantsRef={restaurantsRef}
+        <StoreMarkers storeData={storeData} focus={focus} setFocusFunction={setFocusFunction} storesRef={storesRef}
           visible={visible} setVisible={setVisible} />
       </MapView>
       <View style={{ ...styles.header, width: width, }}>
@@ -86,39 +86,39 @@ export default function RestaurantsMapScreen({ route, navigation }) {
           }
         }}
       >
-        <RestaurantsView restaurantsRef={restaurantsRef} restaurantData={restaurantData} setFocusFunction={setFocusFunction}
+        <StoresView storesRef={storesRef} storeData={storeData} setFocusFunction={setFocusFunction}
           focus={focus} _map={_map} width={width} horizontal={false} Categories={Categories} scrollEnabled={scrollEnabled}
           setDirection={setDirection} setOffset={setOffset} offset={offset} direction={direction}
           setScrollEnabled={setScrollEnabled} navigation={navigation}/>
       </BottomSheet>}
-      {!visible && <RestaurantsView restaurantsRef={restaurantsRef} restaurantData={restaurantData} setFocusFunction={setFocusFunction}
+      {!visible && <StoresView storesRef={storesRef} storeData={storeData} setFocusFunction={setFocusFunction}
         focus={focus} _map={_map} width={width} horizontal={true} setVisible={setVisible} navigation={navigation}/>}
     </View>
   )
 }
-const RestaurantsView = ({ _map, restaurantsRef, restaurantData, setFocusFunction, focus, width, horizontal,
+const StoresView = ({ _map, storesRef, storeData, setFocusFunction, focus, width, horizontal,
   Categories, scrollEnabled, offset, setOffset, direction, setDirection, setScrollEnabled, setVisible, navigation}) => {
   return (
     <View style={horizontal ? styles.flatlist : {}}>
       {horizontal && <ListButton setVisible={setVisible} />}
       <FlatList
-        ref={restaurantsRef}
+        ref={storesRef}
         horizontal={horizontal}
-        data={restaurantData}
+        data={storeData}
         keyExtractor={(item, index) => index}
         renderItem={({ item, index }) => {
           return (
-          <TouchableOpacity style={{...styles.restaurant,width: horizontal ? width * 0.9 : "auto",}}  onPress={()=>navigation.navigate("RestaurantDetail",
+          <TouchableOpacity style={{...styles.store,width: horizontal ? width * 0.9 : "auto",}}  onPress={()=>navigation.navigate("StoreDetail",
           {
-            restaurant: item
+            store: item
           })}>
-            <View style={{ ...styles.restaurantImage_restaurantInfo, paddingTop: horizontal ? 15 : "auto", paddingVertical: horizontal ? "auto" : 10 }}>
-              <RestaurantImage image={item.image} />
-              <RestaurantInfo
+            <View style={{ ...styles.storeImage_storeInfo, paddingTop: horizontal ? 15 : "auto", paddingVertical: horizontal ? "auto" : 10 }}>
+              <StoreImage image={item.image} />
+              <StoreInfo
                 name={item.name}
                 rating={item.rating}
                 city={item.city} />
-              {!horizontal && <Reward restaurant={item} />}
+              {!horizontal && <Reward store={item} />}
             </View>
           </TouchableOpacity>)
         }}
@@ -129,8 +129,8 @@ const RestaurantsView = ({ _map, restaurantsRef, restaurantData, setFocusFunctio
           let w = event.nativeEvent.layoutMeasurement.width
           let index = Math.round(x / w)
           _map.current.animateToRegion({
-            latitude: restaurantData[Math.round(x / w)].latitude,
-            longitude: restaurantData[Math.round(x / w)].longitude,
+            latitude: storeData[Math.round(x / w)].latitude,
+            longitude: storeData[Math.round(x / w)].longitude,
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421
           })
@@ -142,7 +142,7 @@ const RestaurantsView = ({ _map, restaurantsRef, restaurantData, setFocusFunctio
             setScrollEnabled(false)
         }}
         onMomentumScrollEnd={horizontal ? () => {
-          restaurantsRef.current.scrollToIndex({
+          storesRef.current.scrollToIndex({
             animated: true,
             index: focus.findIndex((style) => style.backgroundColor === "black")
           })
@@ -154,13 +154,13 @@ const RestaurantsView = ({ _map, restaurantsRef, restaurantData, setFocusFunctio
     </View>
   )
 }
-const RestaurantMarkers = ({ restaurantData, focus, setFocusFunction, restaurantsRef, visible, setVisible }) => {
-  return restaurantData.map((restaurant, index) => {
+const StoreMarkers = ({ storeData, focus, setFocusFunction, storesRef, visible, setVisible }) => {
+  return storeData.map((store, index) => {
     return (
-      <Marker key={index} title={restaurant.name} description="nasso"
+      <Marker key={index} title={store.name} description="nasso"
         coordinate={{
-          latitude: restaurant.lat,
-          longitude: restaurant.lng,
+          latitude: store.lat,
+          longitude: store.lng,
         }}
         onPress={() => {
           if (visible)
@@ -168,22 +168,22 @@ const RestaurantMarkers = ({ restaurantData, focus, setFocusFunction, restaurant
           const wait = new Promise(resolve => setTimeout(resolve, 500));
           wait.then(() => {
             setFocusFunction(index)
-              .then(() => restaurantsRef.current.scrollToIndex({
+              .then(() => storesRef.current.scrollToIndex({
                 animated: true,
                 index: index
               }))
           })
         }}
       >
-        <View style={{ ...styles.restaurant_marker, backgroundColor: focus[index].backgroundColor, zIndex: focus[index].zIndex }}>
-          <MaterialIcons style={styles.restaurant_marker_icon} name="restaurant" size={15} color={focus[index].color} />
+        <View style={{ ...styles.store_marker, backgroundColor: focus[index].backgroundColor, zIndex: focus[index].zIndex }}>
+          <MaterialIcons style={styles.store_marker_icon} name="store" size={15} color={focus[index].color} />
         </View>
         <Callout tooltip>
           <View style={styles.bubble}>
-            <RestaurantInfo
-              name={restaurant.name}
-              rating={restaurant.rating}
-              city={restaurant.city} />
+            <StoreInfo
+              name={store.name}
+              rating={store.rating}
+              city={store.city} />
           </View>
         </Callout>
       </Marker>
@@ -237,38 +237,38 @@ const styles = StyleSheet.create({
     height: "100%",
     width: "100%",
   },
-  restaurant_marker: {
+  store_marker: {
     backgroundColor: "white",
     borderRadius: 50,
     position: "absolute",
     borderColor: '#ccc',
     borderWidth: 0.5,
   },
-  restaurant_marker_shadow: {
+  store_marker_shadow: {
     backgroundColor: "grey",
     top: 0, left: 0,
     width: 43, height: 43
   },
-  restaurant_marker_icon: {
+  store_marker_icon: {
     padding: 10,
   },
   flatlist: {
     position: "absolute",
     bottom: 70
   },
-  restaurantsContainer:
+  storesContainer:
   {
     flexDirection: "row"
   },
-  restaurant: {
+  store: {
     borderRadius: 10,
     backgroundColor: "white",
     marginHorizontal: 5,
   },
-  restaurantImage_restaurantInfo: {
+  storeImage_storeInfo: {
     marginHorizontal: 10,
   },
-  restaurant_title: {
+  store_title: {
     paddingHorizontal: 50,
     paddingVertical: 50,
   },

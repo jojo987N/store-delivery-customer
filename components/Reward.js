@@ -1,10 +1,10 @@
 import { View, Text, StyleSheet} from 'react-native'
 import React from 'react'
 
-export default function Reward({restaurant}) {
+export default function Reward({store}) {
   return (
     <View style={styles.reward}>
-        <Text style={styles.rewardText}>{restaurant.reward}</Text>
+        <Text style={styles.rewardText}>{store.reward}</Text>
     </View>
   )
 }

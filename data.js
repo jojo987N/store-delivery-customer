@@ -190,7 +190,7 @@ export const categories = [
 ]
 
 
-export const restaurants = [
+export const stores = [
      {
       "alias": "marufuku-ramen-san-francisco-5",
       "categories":  [
@@ -318,7 +318,7 @@ export const restaurants = [
       "rating": 4.5,
       "review_count": 7407,
       "transactions":  [
-        "restaurant_reservation",
+        "store_reservation",
       ],
       collectTime:10,
       deliveryTime:30,
@@ -393,7 +393,7 @@ export const restaurants = [
       "review_count": 3117,
       "transactions":  [
         "pickup",
-        "restaurant_reservation",
+        "store_reservation",
         "delivery",
       ],
       deliveryTime:25,
@@ -553,7 +553,7 @@ export const restaurants = [
       "rating": 4,
       "review_count": 101,
       "transactions":  [
-        "restaurant_reservation",
+        "store_reservation",
       ],
       deliveryTime:15,
       collectTime:10,
@@ -977,8 +977,8 @@ export const orders = [
      "status":"NEW",
      "createdAt":"2022-04-16T18:56:21.890Z",
      "updatedAt":"2022-04-16T18:56:21.890Z",
-     "orderRestaurantId":"7d7965f7-1b33-4b8c-9bac-0c22bc905030",
-     "Restaurant":{
+     "orderStoreId":"7d7965f7-1b33-4b8c-9bac-0c22bc905030",
+     "Store":{
         "id":"7d7965f7-1b33-4b8c-9bac-0c22bc905030",
         "name":"El Cabo Coffe Bar Tres De Mayo",
         "image":"",
@@ -999,8 +999,8 @@ export const orders = [
      "status":"NEW",
      "createdAt":"2022-04-16T18:53:32.261Z",
      "updatedAt":"2022-04-16T18:53:32.261Z",
-     "orderRestaurantId":"7d7965f7-1b33-4b8c-9bac-0c22bc905030",
-     "Restaurant":{
+     "orderStoreId":"7d7965f7-1b33-4b8c-9bac-0c22bc905030",
+     "Store":{
         "id":"7d7965f7-1b33-4b8c-9bac-0c22bc905030",
         "name":"Jacobs - DuBuque",
         "image":"",
@@ -1021,11 +1021,11 @@ export const orders = [
      "status":"NEW",
      "createdAt":"2022-04-16T18:56:49.713Z",
      "updatedAt":"2022-04-16T18:56:49.713Z",
-     "orderRestaurantId":"7d7965f7-1b33-4b8c-9bac-0c22bc905030",
+     "orderStoreId":"7d7965f7-1b33-4b8c-9bac-0c22bc905030",
      "_version":1,
      "_lastChangedAt":1650135409734,
      "_deleted":null,
-     "Restaurant":{
+     "Store":{
         "id":"7d7965f7-1b33-4b8c-9bac-0c22bc905030",
         "name":"Jacobs - DuBuque",
         "image":"",

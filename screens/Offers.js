@@ -1,9 +1,9 @@
 import { View, Text, StyleSheet, ScrollView, StatusBar} from 'react-native'
 import React from 'react'
 import { AntDesign } from '@expo/vector-icons'
-import { ArrowBack } from '../components/restaurantDetail/About'
-import {restaurants} from '../data'
-import { RestaurantInfo, RestaurantImage} from '../components/home/RestaurantItems'
+import { ArrowBack } from '../components/storeDetail/About'
+import {stores} from '../data'
+import { StoreInfo, StoreImage} from '../components/home/StoreItems'
 import Reward from '../components/Reward'
 
 export default function Offers({navigation}) {
@@ -15,15 +15,15 @@ export default function Offers({navigation}) {
            
       </View>
       <ScrollView >
-              {restaurants.map((restaurant, index)=>
+              {stores.map((store, index)=>
 
-               <View key={index} style={styles.restaurantsContainer}>
-                   <RestaurantImage image={restaurant.image_url} />
-                   <RestaurantInfo
-                                name={restaurant.name}
-                                rating={restaurant.rating}
-                                city={restaurant.location.city}/>
-                      <Reward restaurant={restaurant}/>
+               <View key={index} style={styles.storesContainer}>
+                   <StoreImage image={store.image_url} />
+                   <StoreInfo
+                                name={store.name}
+                                rating={store.rating}
+                                city={store.location.city}/>
+                      <Reward store={store}/>
                </View>
 
               )}
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
        marginLeft : 20,
         fontSize: 25
     },
-    restaurantsContainer: {
+    storesContainer: {
         marginVertical: 10
     }, 
     

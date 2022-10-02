@@ -2,12 +2,12 @@ import { View, Text, Image, StyleSheet, ScrollView} from 'react-native'
 import React, { useState } from 'react'
 import {language, currency}  from '../global'
 import { CheckBox } from 'react-native-elements'
-import { Quantity } from '../components/restaurantDetail/MenuItems'
-import ViewCart from '../components/restaurantDetail/ViewCart'
+import { Quantity } from '../components/storeDetail/MenuItems'
+import ViewCart from '../components/storeDetail/ViewCart'
 import DisplayPreferences from '../components/DisplayPreferences'
 import Size from '../components/Size'
 export default function MenuDetailScreen({route}) {
-  const {food, restaurant} = route.params
+  const {food, store} = route.params
   const [checkbox1, setCheckbox1] = useState(true)
   const [checkbox2, setCheckbox2] = useState(false)
   return (
@@ -21,15 +21,15 @@ export default function MenuDetailScreen({route}) {
       </View>
       <View style={styles.divider1}></View>
 
-      <Size food={food} restaurant={restaurant}/>
+      <Size food={food} store={store}/>
       <View style={styles.section2}>
       {/* <DisplayPreferences /> */}
        
       </View>
-      <Quantity id={food.id} food={food} restaurant={restaurant} screen="mds"/>
+      <Quantity id={food.id} food={food} store={store} screen="mds"/>
       <View style={{height: 100}} />
     </ScrollView>
-     <ViewCart params={{restaurant: restaurant}} />
+     <ViewCart params={{store: store}} />
     </>
   )
 }

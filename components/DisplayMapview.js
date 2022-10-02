@@ -3,15 +3,15 @@ import React from 'react'
 import MapView, { Marker, Polyline, PROVIDER_GOOGLE } from 'react-native-maps' 
 import MapViewDirections from 'react-native-maps-directions';
 import { CustomMarker, DisplayMapviewDirections } from '../screens/OrderRequest'
-const DisplayMapview = ({userLocation, mapRef, apikey, restaurant, height}) => {
+const DisplayMapview = ({userLocation, mapRef, apikey, store, height}) => {
   return (
     <MapView
         provider={PROVIDER_GOOGLE}
         ref={mapRef}
         initialRegion={{
           // ...userLocation,
-          latitude: restaurant.lat,
-          longitude: restaurant.lng,
+          latitude: store.lat,
+          longitude: store.lng,
           latitudeDelta: 0.09,
           longitudeDelta: 0.04 
         }}
@@ -26,8 +26,8 @@ const DisplayMapview = ({userLocation, mapRef, apikey, restaurant, height}) => {
           // latitude: 48.904634,
           // longitude: 2.432682
 
-          latitude: restaurant.lat,
-          longitude: restaurant.lng
+          latitude: store.lat,
+          longitude: store.lng
         }]}
         strokeColor="#000"
         strokeColors={[

@@ -6,7 +6,7 @@ import {
 } from 'firebase/firestore'
 import { getStorage, ref, getDownloadURL } from 'firebase/storage'
 import { LogBox } from 'react-native';
-import { restaurants } from './data';
+import { stores } from './data';
 LogBox.ignoreLogs(['AsyncStorage has been extracted from react-native core'])
 
 const firebaseConfig = {
@@ -22,20 +22,35 @@ export default firebaseApp;
 export const auth = getAuth(firebaseApp)
 export const db = getFirestore()
 export const storage = getStorage();
-const restaurantsCol = collection(db, 'restaurants')
+const storesCol = collection(db, 'stores')
 const categoriesCol = collection(db, 'categories')
-const categoriesRestaurantsCol = collection(db, 'categoriesRestaurants')
-export const getRestaurantsFromFirebase = () => {
-  const restos = []
-  return getDocs(restaurantsCol)
+const categoriesStoresCol = collection(db, 'categoriesStores')
+
+// export const getStoresFromFirebase = () => {
+//   const restos = []
+//   return getDocs(storesCol)
+//     .then((snapshot) => {
+//       snapshot.docs.forEach((doc) => {
+//         restos.push({
+//           storeId: doc.id,
+//           ...doc.data()
+//         })
+//       })
+//       return restos
+//     })
+// }
+
+export const getStoresFromFirebase = () => {
+  const stores = []
+  return getDocs(storesCol)
     .then((snapshot) => {
       snapshot.docs.forEach((doc) => {
         restos.push({
-          restaurantId: doc.id,
+          storeId: doc.id,
           ...doc.data()
         })
       })
-      return restos
+      return stores
     })
 }
 export const ordersCol = collection(db, 'orders')
@@ -81,23 +96,23 @@ const testt = () => {
       console.log(snapshot.docs[0].data())
     })
 }
-export const addRestaurants = (restaurants) => {
-  restaurants.forEach((restaurant) => {
-    addDoc(restaurantsCol, restaurant)
+export const addStores = (stores) => {
+  stores.forEach((store) => {
+    addDoc(storesCol, store)
       .then(() => console.log("ajouté"))
   })
 }
 const foodsCol = collection(db, 'foods')
 const addfoods = () => {
-  getDocs(restaurantsCol)
+  getDocs(storesCol)
     .then(snapshot => snapshot.docs.forEach((doc) => {
       doc.data().dishes.forEach((dishe) => {
         addDoc(foodsCol, dishe.name ? {
-          restaurantID: doc.id,
+          storeID: doc.id,
           ...dishe,
           createdAt: serverTimestamp()
         } : {
-          restaurantID: doc.id,
+          storeID: doc.id,
           ...dishe,
           name: dishe.title,
           createdAt: serverTimestamp()
@@ -105,10 +120,10 @@ const addfoods = () => {
       })
     }))
 }
-export const getFoods = (restaurantId) => {
+export const getFoods = (storeId) => {
 
   const foods = []
-  const q = query(foodsCol, where("restaurantId", "==", restaurantId))
+  const q = query(foodsCol, where("storeId", "==", storeId))
   return getDocs(q)
     .then((snapshot) => {
       snapshot.docs.forEach((doc) => {
@@ -177,13 +192,13 @@ const getImageFromStorage = (imagePath) => {
 const addOrderToFirebase = () => {
   addDoc(ordersCol, {
     orderId: generateUID(),
-    restaurantId: restaurant.restaurantId,
-    Restaurant: {
-      lat: restaurant.coordinates.latitude,
-      lng: restaurant.coordinates.longitude,
-      address: restaurant.location.display_address.toString(),
-      phone: restaurant.phone,
-      name: restaurant.name,
+    storeId: store.storeId,
+    Store: {
+      lat: store.coordinates.latitude,
+      lng: store.coordinates.longitude,
+      address: store.location.display_address.toString(),
+      phone: store.phone,
+      name: store.name,
     },
     User: {
       name: name,
@@ -201,7 +216,7 @@ const addOrderToFirebase = () => {
     navigation.navigate('OrderRequest', { loc: loc })
   })
 }
-const populateRestaurant = () => {
+const populateStore = () => {
   const themes = [
     "In a rush?",
     "Best Overall",
@@ -211,10 +226,10 @@ const populateRestaurant = () => {
     "Only on Good Food",
     "Everyday savings"
   ]
-  getDocs(restaurantsCol)
+  getDocs(storesCol)
     .then(snapshot => {
       snapshot.docs.forEach((docc) => {
-        updateDoc(doc(db, 'restaurants', docc.id), {
+        updateDoc(doc(db, 'stores', docc.id), {
           theme: themes[Math.floor(Math.random() * 7)]
         }).then(() => console.log('Updated'))
       })
@@ -229,24 +244,24 @@ export const getCategories = () => {
     return categories
   })
 }
-export const getCategoriesRestaurants = () => {
-  let categoriesRestaurants = []
-  return getDocs(categoriesRestaurantsCol).then(snapshot => {
+export const getCategoriesStores = () => {
+  let categoriesStores = []
+  return getDocs(categoriesStoresCol).then(snapshot => {
     snapshot.docs.forEach((doc) => {
-      categoriesRestaurants.push({ ...doc.data(), id: doc.id })
+      categoriesStores.push({ ...doc.data(), id: doc.id })
     })
-    return categoriesRestaurants
+    return categoriesStores
   })
 }
-export const getCategoriesFromRestaurant = async (restaurantId) => {
-  const categoriesRestaurants = await getCategoriesRestaurants()
-  const categoriesRestaurantsResult = categoriesRestaurants.filter(categoryRestaurant => categoryRestaurant.restaurantId === restaurantId)
+export const getCategoriesFromStore = async (storeId) => {
+  const categoriesStores = await getCategoriesStores()
+  const categoriesStoresResult = categoriesStores.filter(categoryStore => categoryStore.storeId === storeId)
   const categories = await getCategories()
-  return categoriesRestaurantsResult.map(categoryRestaurantResult => categories.find(category => category.id === categoryRestaurantResult.categoryId))
+  return categoriesStoresResult.map(categoryStoreResult => categories.find(category => category.id === categoryStoreResult.categoryId))
 }
-export const searchRestaurantsByCategory = async (categoryId) => {
-  const categoriesRestaurants = await getCategoriesRestaurants()
-  const categoriesRestaurantsResult = categoriesRestaurants.filter(categoryRestaurant => categoryRestaurant.categoryId === categoryId)
-  const restaurants = await getRestaurantsFromFirebase()
-  return categoriesRestaurantsResult.map(categoryRestaurantResult => restaurants.find(restaurant => restaurant.restaurantId === categoryRestaurantResult.restaurantId))
+export const searchStoresByCategory = async (categoryId) => {
+  const categoriesStores = await getCategoriesStores()
+  const categoriesStoresResult = categoriesStores.filter(categoryStore => categoryStore.categoryId === categoryId)
+  const stores = await getStoresFromFirebase()
+  return categoriesStoresResult.map(categoryStoreResult => stores.find(store => store.storeId === categoryStoreResult.storeId))
 }

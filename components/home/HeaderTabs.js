@@ -21,7 +21,7 @@ export default function HeaderTabs(props) {
             activeTab={props.activeTab} 
             setActiveTab={props.setActiveTab}
             navigation={props.navigation}
-            restaurantData={props.restaurantData}
+            storeData={props.storeData}
             pickup={props.pickup}/>
     </View>     
   )
@@ -38,8 +38,8 @@ const HeaderButton = (props) => (
         if(props.setActiveTab)
         props.setActiveTab(props.text)
         if(props.text && props.navigation)
-        if(props.text === 'Pickup') props.navigation.navigate('RestaurantsMapScreen',{
-          restaurantData: props.restaurantData
+        if(props.text === 'Pickup') props.navigation.navigate('StoresMapScreen',{
+          storeData: props.storeData
         })
         if(props.text === 'Delivery' && !props.delivery){
             props.setCity(null)

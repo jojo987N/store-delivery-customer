@@ -4,9 +4,9 @@ import { CheckBox } from "react-native-elements"
 import { useDispatch, useSelector } from "react-redux"
 import { currency, language } from "../global"
 
-const Size = ({ food, restaurant }) => {
+const Size = ({ food, store }) => {
     const dispatch = useDispatch();
-    // const items = useSelector((state)=>state.cartReducer).filter(item => item.restaurantName === restaurant.name)
+    // const items = useSelector((state)=>state.cartReducer).filter(item => item.storeName === store.name)
     const [checked, setChecked] = useState(new Array(Object.keys(food.size).length).fill(false))
 
     return Object.keys(food.size).map((key, index) => {
@@ -28,9 +28,9 @@ const Size = ({ food, restaurant }) => {
                                     price: food.size[key]
                                 },
                                 price:Number(food.size[key]),
-                                restaurantName: restaurant.name,
-                                restaurantImage: restaurant.image,
-                                restaurant: restaurant
+                                storeName: store.name,
+                                storeImage: store.image,
+                                store: store
 
                             }
                         });

@@ -5,14 +5,14 @@ import { AntDesign } from '@expo/vector-icons';
 import Categories from './Categories';
 import Reward from '../Reward';
 
-export default function RestaurantItems({navigation,...props}) {
+export default function StoreItems({navigation,...props}) {
     const { width, height } = useWindowDimensions();
   return (
       <View style={{
           }}>
               <FlatList 
                   ref={props.flatlist}
-                  data={props.reward?props.restaurantData.filter(restaurant => restaurant.reward === props.reward):props.ads?props.restaurantData.filter(restaurant => restaurant.ads ):props.restaurantData}
+                  data={props.reward?props.storeData.filter(store => store.reward === props.reward):props.ads?props.storeData.filter(store => store.ads ):props.storeData}
                   keyExtractor={(item, index)=>index}
                   renderItem={({item, index})=> {
                     return (
@@ -21,9 +21,9 @@ export default function RestaurantItems({navigation,...props}) {
                         activeOpacity={1} 
                         style={{
                         }}
-                        onPress={()=>navigation.navigate("RestaurantDetail",
+                        onPress={()=>navigation.navigate("StoreDetail",
                         {
-                          restaurant: item
+                          store: item
                         })}
                         >
                             <View  
@@ -34,11 +34,11 @@ export default function RestaurantItems({navigation,...props}) {
                                    width: props.size?width:width*0.8
                                 }}>
                                 <View >
-                                    <RestaurantImage image={item.image} />
-                                    {props.reward || item.reward ?<Reward restaurant={item}/>:<></>}
+                                    <StoreImage image={item.image} />
+                                    {props.reward || item.reward ?<Reward store={item}/>:<></>}
                                     {props.ads && <Affiche ads={item.ads} adsColor={item.adsColor}/>}
                                 </View>
-                                <RestaurantInfo 
+                                <StoreInfo 
                                     name={item.name.substring(0,20)}
                                     rating={item.rating} 
                                     city={item.city}/>
@@ -52,7 +52,7 @@ export default function RestaurantItems({navigation,...props}) {
       </View>
   )
 }
-export const RestaurantImage= (props)=>{
+export const StoreImage= (props)=>{
     const [liked, setLiked] = useState(false)
     return(
     <>
@@ -80,7 +80,7 @@ export const RestaurantImage= (props)=>{
         </TouchableOpacity>
     </>
 )}
-export const RestaurantInfo = (props)=>(
+export const StoreInfo = (props)=>(
     <View style={{
         flexDirection: "row",
         justifyContent: "space-between",

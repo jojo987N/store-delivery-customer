@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar} from 'react-native'
 import React from 'react'
-import { ArrowBack } from '../components/restaurantDetail/About'
+import { ArrowBack } from '../components/storeDetail/About'
 import { grey1 } from '../global'
 import { AntDesign } from '@expo/vector-icons'
 

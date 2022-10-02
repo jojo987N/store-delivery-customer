@@ -23,14 +23,14 @@ import { NavigationContainer } from '@react-navigation/native';
     
 }) 
 
-export default function MenuDetailItems({restaurantName, foods, hideCheckbox, marginLeft, navigation}) {
+export default function MenuDetailItems({storeName, foods, hideCheckbox, marginLeft, navigation}) {
   const dispatch = useDispatch();
 
   const selectItem = (item, checkboxValue)=> dispatch({
      type: 'ADD_TO_CART',
      payload: {
        ...item, 
-       restaurantName: restaurantName, 
+       storeName: storeName, 
        checkboxValue: checkboxValue},
      
   });

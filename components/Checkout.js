@@ -10,32 +10,32 @@ import { useNavigation } from '@react-navigation/native'
 import Loader from '../screens/Loader'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { LoaderContext } from '../contexts/LoaderContext'
-export default function Checkout({restaurantName, setLoader, setViewCartButton, setModalVisible}) {
+export default function Checkout({storeName, setLoader, setViewCartButton, setModalVisible}) {
     const {setLoading} = useContext(LoaderContext)
     const {name, phone, address, id, lat, lng} = useSelector((state)=>state.userReducer)
      const navigation = useNavigation()
-    const items = useSelector((state)=>state.cartReducer).filter(item => item.restaurantName === restaurantName)
+    const items = useSelector((state)=>state.cartReducer).filter(item => item.storeName === storeName)
     const total = items.reduce((prev, curr)=> prev + curr.price, 0)
 
-    console.log("IMAGE : ",items[0].restaurantImage)
+    console.log("IMAGE : ",items[0].storeImage)
     const dispatch = useDispatch();   
     const addOrderToFirebase = () => {
         setViewCartButton(false)
         addDoc(ordersCol, {
             orderId: generateUID(),
-            restaurantId: items[0].restaurant.restaurantId,
-            Restaurant: {
-                    //  lat: items[0].restaurant.coordinates.latitude,
-                    //  lng: items[0].restaurant.coordinates.longitude,
-                    //  address: items[0].restaurant.location.display_address.toString(),
-                    //  phone: items[0].restaurant.phone,
-                    //  name: items[0].restaurant.name,
+            storeId: items[0].store.storeId,
+            Store: {
+                    //  lat: items[0].store.coordinates.latitude,
+                    //  lng: items[0].store.coordinates.longitude,
+                    //  address: items[0].store.location.display_address.toString(),
+                    //  phone: items[0].store.phone,
+                    //  name: items[0].store.name,
 
-                    lat: items[0].restaurant.lat,
-                     lng: items[0].restaurant.lng,
-                     address: items[0].restaurant.address,
-                     phone: items[0].restaurant.phone,
-                     name: items[0].restaurant.name,
+                    lat: items[0].store.lat,
+                     lng: items[0].store.lng,
+                     address: items[0].store.address,
+                     phone: items[0].store.phone,
+                     name: items[0].store.name,
                  },
             User: {
                     id: id,
@@ -53,7 +53,7 @@ export default function Checkout({restaurantName, setLoader, setViewCartButton, 
                 createdAt: serverTimestamp(),
         })
         .then(()=> {
-            dispatch({ type: 'CLEAR_RESTAURANT', payload: restaurantName })
+            dispatch({ type: 'CLEAR_STORE', payload: storeName })
             setLoading(false)
            navigation.navigate('OrderRequest',{
             //    lat: address.location.lat,

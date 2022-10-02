@@ -6,7 +6,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign'
 import { apikey } from '../../global'
 import { location } from '../../utils'
 
-export default function SearchBar({searchbar, cityHandler, style, setAddress, navigation, restaurantData}) {
+export default function SearchBar({searchbar, cityHandler, style, setAddress, navigation, storeData}) {
   const [value, setValue] = useState()
   return (
     <View style={{marginTop: 15, flexDirection: "row"}}>

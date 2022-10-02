@@ -23,7 +23,7 @@ export default function AccountScreen({navigation}) {
       </View>
       <TouchableOpacity style={styles.line} onPress={()=>navigation.navigate("Offers")}>
         <MaterialIcons name="stars" size={24} color="black" />
-        <Text style={styles.text}>Restaurant Rewards </Text>
+        <Text style={styles.text}>Store Rewards </Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.line} onPress={()=>navigation.navigate("Wallet")}>
         <Entypo name="wallet" size={24} color="black" />

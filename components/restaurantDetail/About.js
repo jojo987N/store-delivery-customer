@@ -1,31 +1,31 @@
 import { View, Text, Image, ImageBackground, StyleSheet, TouchableOpacity} from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
 import { Icon } from 'react-native-elements';
-import RestaurantDetailComponent from '../RestaurantDetailComponent';
+import StoreDetailComponent from '../StoreDetailComponent';
 import { apikey } from '../../global';
-import { getCategoriesFromRestaurant } from '../../firebase';
+import { getCategoriesFromStore } from '../../firebase';
 import { CategoriesContext } from '../../contexts/CategoriesContext';
 
 export default function About(props) {
-  const {restaurant} = props.route.params
-  const {name, image_url, price, review_count, rating, collectTime} = restaurant;
-  const [restaurantDetail, setRestaurantDetail] = useState(false)
+  const {store} = props.route.params
+  const {name, image_url, price, review_count, rating, collectTime} = store;
+  const [storeDetail, setStoreDetail] = useState(false)
   // const {categories, setCategories} = useContext(CategoriesContext)
   const [categories, setCategories] = useState()
 let description;
  if(categories)
 description = `⭐${rating} (${review_count}+ ratings) • ${categories[0].name} •${price}• 🎫`
 useEffect(()=> {
-  getCategoriesFromRestaurant(restaurant.restaurantId)
+  getCategoriesFromStore(store.storeId)
   .then(categories => {
     setCategories(categories)
   })
 }, [])
 return (
     <View style={styles.container}>
-      <RestaurantName name={name}/>
-      <TouchableOpacity onPress={()=>setRestaurantDetail(true)}>
-      <RestaurantDescription 
+      <StoreName name={name}/>
+      <TouchableOpacity onPress={()=>setStoreDetail(true)}>
+      <StoreDescription 
       description={description} 
       collectTime={collectTime}
       />
@@ -33,13 +33,13 @@ return (
         <Text style={styles.openText}>Open until 2:00 AM</Text>
         </View>
       </TouchableOpacity>
-       <RestaurantDetailComponent restaurant={restaurant} 
-       visible={restaurantDetail} setVisible={setRestaurantDetail}
+       <StoreDetailComponent store={store} 
+       visible={storeDetail} setVisible={setStoreDetail}
        userLocation={props.userLocation} mapRef={props.mapRef} apikey={props.apikey}/>
     </View>
   )
 }
-const RestaurantImage = (props)=>(
+const StoreImage = (props)=>(
   <ImageBackground
     style={styles.container}
     source={{uri: props.image }}
@@ -59,7 +59,7 @@ export const ArrowBack = (props)=>{
 </View>
   )
 }
-export const RestaurantName = (props) => (
+export const StoreName = (props) => (
 <Text style={{
     fontSize: 29,
     fontWeight:Platform.OS === "android"?"bold":"600",
@@ -67,7 +67,7 @@ export const RestaurantName = (props) => (
 }}
 >{props.name}</Text>
 )
-export const RestaurantDescription = (props)=>(
+export const StoreDescription = (props)=>(
       <View style={styles.description}>
         <Text style={props.style?{...props.style}:styles.textDescription}>{props.description}</Text>
       </View>

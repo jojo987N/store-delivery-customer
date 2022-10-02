@@ -1,21 +1,21 @@
 import { View, Text, StyleSheet, TouchableOpacity} from 'react-native'
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
-import OrderItem from './restaurantDetail/OrderItem'
+import OrderItem from './storeDetail/OrderItem'
 import {language, currency}  from '../global'
 import Checkout from './Checkout'
 import Loader from '../screens/Loader'
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 
-const Cart = ({restaurantName, setViewCartButton, setModalVisible})=>{
-    const items = useSelector((state)=>state.cartReducer).filter(item => item.restaurantName === restaurantName)
+const Cart = ({storeName, setViewCartButton, setModalVisible})=>{
+    const items = useSelector((state)=>state.cartReducer).filter(item => item.storeName === storeName)
     const total = items.reduce((prev, curr)=> prev + curr.price, 0)
     const [loader, setLoader] = useState(false)
     return (
             <TouchableOpacity style={styles.modalContainer} onPress={()=> setModalVisible(false)} 
             activeOpacity={1} >
                 <TouchableOpacity activeOpacity={1} onPress={()=>{}} style={styles.modalCheckoutContainer}>
-                    <Text style={styles.restaurantName}>{restaurantName}</Text>
+                    <Text style={styles.storeName}>{storeName}</Text>
                     {Object.entries(items.map(item => item.name)
                         .reduce((acc, curr) => (acc[curr] = (acc[curr] || 0) + 1, acc), {}))
                         .map(([name, quantity], index) => (
@@ -28,7 +28,7 @@ const Cart = ({restaurantName, setViewCartButton, setModalVisible})=>{
                             currency: currency
                         })}</Text>
                     </View>
-                    <Checkout restaurantName={restaurantName} setLoader={setLoader} setViewCartButton={setViewCartButton}
+                    <Checkout storeName={storeName} setLoader={setLoader} setViewCartButton={setViewCartButton}
                     setModalVisible={setModalVisible}/>
                 </TouchableOpacity>
             </TouchableOpacity>
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 20,
         borderTopRightRadius: 20
     },
-    restaurantName:{
+    storeName:{
         textAlign: "center",
         fontWeight:Platform.OS === "android"?"bold":"600",
         fontSize: 18,

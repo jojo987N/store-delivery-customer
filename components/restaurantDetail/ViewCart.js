@@ -18,16 +18,16 @@ LogBox.ignoreLogs(['Setting a timer'])
 
 export default function ViewCart({navigation, route, params}) {
    const {name, phone, address} = useSelector((state)=>state.userReducer)
-    const {restaurant} = route?route.params:params
+    const {store} = route?route.params:params
     const [modalVisible, setModalVisible] = useState(false);
     const [modalDetailVisible, setModalDetailVisible] = useState(true);
     const [viewCartButton, setViewCartButton] = useState(true)
-   const items = useSelector((state)=>state.cartReducer).filter(item => item.restaurantName === restaurant.name)
+   const items = useSelector((state)=>state.cartReducer).filter(item => item.storeName === store.name)
     const total = items.reduce((prev, curr)=> prev + curr.price, 0)
     const dispatch = useDispatch();   
     return (
         <>
-                <CartModal modalVisible={modalVisible} setModalVisible={setModalVisible} restaurantName={restaurant.name} 
+                <CartModal modalVisible={modalVisible} setModalVisible={setModalVisible} storeName={store.name} 
             setViewCartButton={setViewCartButton}/>
             {total && viewCartButton ? (
             <View style={{

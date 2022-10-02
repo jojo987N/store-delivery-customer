@@ -1,14 +1,14 @@
 import { View, Text, Modal, ImageBackground, StyleSheet, Animated, TouchableOpacity, ScrollView, StatusBar } from 'react-native'
 import React, { useContext, useEffect, useRef, useState } from 'react'
-import About from '../components/restaurantDetail/About'
+import About from '../components/storeDetail/About'
 import { Divider } from 'react-native-elements'
-import MenuItems from '../components/restaurantDetail/MenuItems'
-import ViewCart from '../components/restaurantDetail/ViewCart'
+import MenuItems from '../components/storeDetail/MenuItems'
+import ViewCart from '../components/storeDetail/ViewCart'
 import BottomSheet, { BottomSheetScrollView } from '@gorhom/bottom-sheet'
 import grey1 from '../global'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Icon } from 'react-native-elements';
-import { ArrowBack } from '../components/restaurantDetail/About'
+import { ArrowBack } from '../components/storeDetail/About'
 import MapView, { Marker, PROVIDER_GOOGLE, } from 'react-native-maps'
 import MapViewDirections from 'react-native-maps-directions';
 import Loader from './Loader'
@@ -17,17 +17,17 @@ import { apikey } from '../global'
 import DisplayMapview from '../components/DisplayMapview'
 import HeaderTabs from '../components/home/HeaderTabs'
 import GroupFoodHeader from '../components/GroupFoodHeader'
-import RestaurantDetailHeader from '../components/restaurantDetail/RestaurantDetailHeader'
+import StoreDetailHeader from '../components/storeDetail/StoreDetailHeader'
 import { LoaderContext } from "../contexts/LoaderContext"
 
 
 
 
-export default function RestaurantDetail({ route, navigation }) {
+export default function StoreDetail({ route, navigation }) {
 
-  const { restaurant } = route.params
+  const { store } = route.params
 
-  const { image } = restaurant;
+  const { image } = store;
 
   const bottomSheet = useRef(null)
   const mapRef = useRef(null)
@@ -146,13 +146,13 @@ export default function RestaurantDetail({ route, navigation }) {
 
 
         <Animated.View style={value.getTranslateTransform()}>
-          <RestaurantImage image={image} navigation={navigation} />
+          <StoreImage image={image} navigation={navigation} />
         </Animated.View>
 
         <Divider width={5} color="white" style={{}} />
 
         <Animated.View style={value1.getTranslateTransform()}>
-          < DisplayMapview userLocation={userLocation} mapRef={mapRef} apikey={apikey} restaurant={restaurant} />
+          < DisplayMapview userLocation={userLocation} mapRef={mapRef} apikey={apikey} store={store} />
         </Animated.View>
 
 
@@ -203,7 +203,7 @@ export default function RestaurantDetail({ route, navigation }) {
 
 
 
-const RestaurantImage = (props) => (
+const StoreImage = (props) => (
 
   <ImageBackground
 

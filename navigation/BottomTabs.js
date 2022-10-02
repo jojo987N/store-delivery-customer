@@ -10,7 +10,7 @@ import AccountScreen from '../screens/AccountScreen'
 import { HomeNavigator, SearchNavigator } from './Stacks'
 import { OrderNavigator } from './Stacks'
 import { useSelector } from 'react-redux'
-import RestaurantsMapScreen from '../screens/RestaurantsMapScreen'
+import StoresMapScreen from '../screens/StoresMapScreen'
 import { FontAwesome } from '@expo/vector-icons'
 const Tab = createBottomTabNavigator() 
 export default function BottomTabs() {
@@ -67,7 +67,7 @@ export default function BottomTabs() {
       <Tab.Screen 
          name = "Map" 
          initialParams={{visible: true}}
-          component={RestaurantsMapScreen} 
+          component={StoresMapScreen} 
          options ={{
           headerShown: false,
            tabBarIcon: ({color, size}) =>(

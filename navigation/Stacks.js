@@ -2,7 +2,7 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import {createStackNavigator} from '@react-navigation/stack'
 import Home from '../screens/Home'
-import RestaurantDetail from '../screens/RestaurantDetail'
+import StoreDetail from '../screens/StoreDetail'
 import MenuDetailScreen from '../screens/MenuDetailScreen'
 import MyOrdersScreen from '../screens/MyOrdersScreen'
 import OrderDetails from '../screens/OrderDetails'
@@ -12,8 +12,8 @@ import SearchScreen from '../screens/SearchScreen'
 import OrdersScreen from '../screens/OrdersScreen'
 import OrderRequest from '../screens/OrderRequest'
 import CartScreen from '../screens/CartScreen'
-import RestaurantsMapScreen from '../screens/RestaurantsMapScreen'
-import RestaurantSearchResults from '../screens/RestaurantSearchResults'
+import StoresMapScreen from '../screens/StoresMapScreen'
+import StoreSearchResults from '../screens/StoreSearchResults'
 import { CategoriesContextProvider } from '../contexts/CategoriesContext'
 
 const  HomeStack = createStackNavigator()
@@ -28,13 +28,13 @@ export function HomeNavigator() {
           options={{headerShown: false}}/>
 
       <HomeStack.Screen 
-          name="RestaurantSearchResults"
-          component={RestaurantSearchResults}
+          name="StoreSearchResults"
+          component={StoreSearchResults}
           options={{headerShown: false}}/>
 
         <HomeStack.Screen
-          name="RestaurantDetail"
-          component={RestaurantDetail}
+          name="StoreDetail"
+          component={StoreDetail}
           options={{ headerShown: false }} />
       
 
@@ -49,8 +49,8 @@ export function HomeNavigator() {
           options={{headerShown: false}}/>
 
 <HomeStack.Screen 
-          name="RestaurantsMapScreen"
-          component={RestaurantsMapScreen}
+          name="StoresMapScreen"
+          component={StoresMapScreen}
           options={{headerShown: false}}/>
 
 

@@ -3,9 +3,9 @@ import React from 'react'
 import GroupFoodHeader from '../GroupFoodHeader'
 import { ArrowBack } from './About'
 
-export default function RestaurantDetailHeader({foodsRef, navigation, route}) {
+export default function StoreDetailHeader({foodsRef, navigation, route}) {
   
-    const {restaurant} = route.params
+    const {store} = route.params
     return (
     <View style={styles.container}>
      

@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet} from 'react-native'
 import React from 'react'
 
-export default function RestaurantDescription(props) {
+export default function StoreDescription(props) {
   return (
     <View style={styles.description}>
     <Text style={props.style?{...props.style}:styles.textDescription}>{props.description}</Text>

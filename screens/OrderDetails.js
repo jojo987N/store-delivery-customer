@@ -1,6 +1,6 @@
 import { View, Text, Image, FlatList, ActivityIndicator, StyleSheet} from "react-native";
 import {orders} from "../data";
-import {restaurants} from "../data";
+import {stores} from "../data";
 import { useEffect, useState } from "react";
 import { useRoute } from "@react-navigation/native";
 import DishListItem from "../components/DishListItem";
@@ -9,9 +9,9 @@ const order = orders[0];
   return (
     <View>
       <View style={styles.page}>
-        <Image source={{ uri: order.Restaurant.image }} style={styles.image} />
+        <Image source={{ uri: order.Store.image }} style={styles.image} />
         <View style={styles.container}>
-          <Text style={styles.title}>{order.Restaurant.name}</Text>
+          <Text style={styles.title}>{order.Store.name}</Text>
           <Text style={styles.subtitle}>{order.status} &#8226; 2 days ago</Text>
           <Text style={styles.menuTitle}>Your orders</Text>
         </View>
@@ -27,7 +27,7 @@ const OrderDetails = () => {
     <>
     <OrderDetailsHeader />
     <FlatList  
-        data={restaurants[0].dishes}
+        data={stores[0].dishes}
         renderItem={({item})=><DishListItem  dish={item}/>}/>
     </>
   );
