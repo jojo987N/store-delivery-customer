@@ -490,7 +490,7 @@ export const stores = [
         "pickup",
         "delivery",
       ],
-      theme: "Popular near you",
+      theme: "Everyday savings",
       collectTime:10,
       deliveryTime:20,
       "dishes": [
@@ -542,7 +542,7 @@ export const stores = [
       ],
       "lat": 37.77882,
       "lng": -122.3924,
-      "reward": "$100 until $15 reward",
+      // "reward": "$100 until $15 reward",
       "coordinates":  {
         "latitude": 37.77882,
         "longitude": -122.3924,
@@ -574,6 +574,7 @@ export const stores = [
       "transactions":  [
         "store_reservation",
       ],
+      theme: "Everyday savings",
       deliveryTime:15,
       collectTime:10,
       "dishes": [
@@ -652,6 +653,7 @@ export const stores = [
         "pickup",
         "delivery",
       ],
+      theme: "Rewards for you",
       deliveryTime:20,
       collectTime:5,
       "dishes": [
@@ -735,6 +737,7 @@ export const stores = [
         "pickup",
         "delivery",
       ],
+      theme: "Rewards for you",
       collectTime:15,
       deliveryTime:30,
       "dishes": [
