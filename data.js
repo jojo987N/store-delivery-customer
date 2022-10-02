@@ -574,6 +574,7 @@ export const stores = [
       "transactions":  [
         "store_reservation",
       ],
+      ads: true,
       theme: "Everyday savings",
       deliveryTime:15,
       collectTime:10,
@@ -737,6 +738,7 @@ export const stores = [
         "pickup",
         "delivery",
       ],
+      ads: true,
       theme: "Rewards for you",
       collectTime:15,
       deliveryTime:30,

@@ -35,7 +35,22 @@ export default function Home({navigation}) {
     //     }).then(() => {
     //     })
     //   }
-    // }) 
+    // })
+    let i = 1
+    setInterval(()=>{
+
+      
+     // setTimeout(()=>{
+
+        if (flatlist.current)
+        flatlist.current.scrollToIndex({
+          animated: true,
+          index: i%2===0?0:1
+        })
+
+        i++
+
+    }, 3000) 
         },[])
   if(!storeData)
   return <Loader />
