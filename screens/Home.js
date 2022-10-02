@@ -15,7 +15,7 @@ import { StoresContext } from '../contexts/StoresContext'
 
 export default function Home({navigation}) {
   const {storeData, setStoreData} = useContext(StoresContext)
-  const [city, setCity] = useState("Paris");
+  const [city, setCity] = useState();
   const [activeTab, setActiveTab]= useState("Delivery")
   const flatlist = useRef(null)
   const searchbar = useRef(null)
