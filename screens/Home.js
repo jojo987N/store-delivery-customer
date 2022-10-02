@@ -72,7 +72,13 @@ const StoreRowsItems = ({themes, storeData, navigation}) => {
       return(
         <View key={index}>
           <View style={styles.row}>
-            <StoreItems storeData={storeData} navigation={navigation} horizontal={true} />
+          <Text style={styles.rowsTitle}>{theme}</Text>
+            {/* <RestaurantItems 
+            restaurantData={restaurantData.filter(restaurant => restaurant.theme === theme)} navigation={navigation} horizontal={true} /> */}
+
+            <StoreItems 
+            storeData={storeData.filter(store => store.theme === theme)}
+            navigation={navigation} horizontal={true} />
           </View>
         </View>
       )
