@@ -1637,7 +1637,7 @@ export const products = [
      }
   ]
 
-  console.log(products.map(product => product.category))
+  console.log([...new Set(products.map(product => product.category))])
 
 
 
