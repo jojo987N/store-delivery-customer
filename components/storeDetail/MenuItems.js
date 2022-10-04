@@ -41,17 +41,17 @@ opacity, setCategoriesFood}) {
    const [loader, setLoader] = useState(false)
 
   useEffect(()=>{
-      // //  setLoader(true)
-      //   getFoods(store.storeId).then((foods) => {
-      //     // const wait = new Promise(resolve => setTimeout(resolve, 2000));
-      //     // wait.then(()=>{
-      //       setFoods(foods.map(food => ({...food, price: Number(food.price)}) ))
-      //         // setLoader(false)
-      //     // })
-      //   })
-      //     // .then(() => {
-      //     //   setLoader(false)
-      //     // })
+      //  setLoader(true)
+        getFoods(store.storeId).then((foods) => {
+          // const wait = new Promise(resolve => setTimeout(resolve, 2000));
+          // wait.then(()=>{
+            setFoods(foods.map(food => ({...food, price: Number(food.price)}) ))
+              // setLoader(false)
+          // })
+        })
+          // .then(() => {
+          //   setLoader(false)
+          // })
       
   },[activeTab])
   if(loader)
