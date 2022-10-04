@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {language, currency}  from '../../global'
 import {} from 'react-native-tab-view'
 import { NavigationContainer } from '@react-navigation/native';
-import { stores } from '../../data';
+import { stores, products, products_themes} from '../../data';
 import { AntDesign } from '@expo/vector-icons';
 import { getFoods } from '../../firebase';
 import Loader from '../../screens/Loader';
@@ -41,17 +41,17 @@ opacity, setCategoriesFood}) {
    const [loader, setLoader] = useState(false)
 
   useEffect(()=>{
-      //  setLoader(true)
-        getFoods(store.storeId).then((foods) => {
-          // const wait = new Promise(resolve => setTimeout(resolve, 2000));
-          // wait.then(()=>{
-            setFoods(foods.map(food => ({...food, price: Number(food.price)}) ))
-              // setLoader(false)
-          // })
-        })
-          // .then(() => {
-          //   setLoader(false)
-          // })
+      // //  setLoader(true)
+      //   getFoods(store.storeId).then((foods) => {
+      //     // const wait = new Promise(resolve => setTimeout(resolve, 2000));
+      //     // wait.then(()=>{
+      //       setFoods(foods.map(food => ({...food, price: Number(food.price)}) ))
+      //         // setLoader(false)
+      //     // })
+      //   })
+      //     // .then(() => {
+      //     //   setLoader(false)
+      //     // })
       
   },[activeTab])
   if(loader)
@@ -66,10 +66,10 @@ opacity, setCategoriesFood}) {
       <FlatList
       ref={foodsRef}
       //  data={groupFoods}
-      data={categories.filter(category => category.type === "food")}
+      data={products_themes}
       keyExtractor={(item, index)=>index}
       renderItem={({item, index})=> {
-        let data = foods.filter((food)=>food.category === item.name)
+        let data = foods.filter((food)=>food.theme === item.name)
         return (
           <View >
            {data.length? <Text style={styles.groupTitle}>{item.name}</Text>:<></>} 
