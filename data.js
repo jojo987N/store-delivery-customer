@@ -1080,7 +1080,7 @@ export const products_themes = [
   "Deal of The Month",
 ]
 
-console.log(products.map(product => product.category))
+ 
 
 export const products = [
      {
@@ -1636,6 +1636,8 @@ export const products = [
         ]
      }
   ]
+
+  console.log(products.map(product => product.category))
 
 
 
