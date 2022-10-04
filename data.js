@@ -1081,6 +1081,15 @@ export const products_themes = [
 ]
 
  
+export const categoriesProducts = [
+  "smartphones",
+  "laptops",
+  "fragrances",
+  "skincare",
+  "groceries",
+  "home-decoration",
+]
+
 
 export const products = [
      {
@@ -1637,7 +1646,7 @@ export const products = [
      }
   ]
 
-  console.log([...new Set(products.map(product => product.category))])
+  // console.log([...new Set(products.map(product => product.category))])
 
 
 

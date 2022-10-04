@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {language, currency}  from '../../global'
 import {} from 'react-native-tab-view'
 import { NavigationContainer } from '@react-navigation/native';
-import { stores, products, products_themes} from '../../data';
+import { stores, products, products_themes, categoriesProducts} from '../../data';
 import { AntDesign } from '@expo/vector-icons';
 import { getFoods } from '../../firebase';
 import Loader from '../../screens/Loader';
@@ -66,7 +66,7 @@ opacity, setCategoriesFood}) {
       <FlatList
       ref={foodsRef}
       //  data={groupFoods}
-      data={products_themes}
+      data={categoriesProducts}
       keyExtractor={(item, index)=>index}
       renderItem={({item, index})=> {
         let data = foods.filter((food)=>food.theme === item.name)
