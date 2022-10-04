@@ -69,7 +69,7 @@ opacity, setCategoriesFood}) {
       data={categoriesProducts}
       keyExtractor={(item, index)=>index}
       renderItem={({item, index})=> {
-        let data = foods.filter((food)=>food.theme === item.name)
+        let data = foods.filter((food)=>food.category === item)
         return (
           <View >
            {data.length? <Text style={styles.groupTitle}>{item.name}</Text>:<></>} 
