@@ -5,22 +5,21 @@ import StoreDetailComponent from '../StoreDetailComponent';
 import { apikey } from '../../global';
 import { getCategoriesFromStore } from '../../firebase';
 import { CategoriesContext } from '../../contexts/CategoriesContext';
-import { categories } from '../../data';
 
 export default function About(props) {
   const {store} = props.route.params
   const {name, image_url, price, review_count, rating, collectTime} = store;
   const [storeDetail, setStoreDetail] = useState(false)
   // const {categories, setCategories} = useContext(CategoriesContext)
-  // const [categories, setCategories] = useState()
+  const [categories, setCategories] = useState()
 let description;
-//  if(categories)
-description = `⭐${rating} (${review_count}+ ratings) • ${categories[0]} •${price}• 🎫`
+ if(categories)
+description = `⭐${rating} (${review_count}+ ratings) • ${categories[0].name} •${price}• 🎫`
 useEffect(()=> {
-  // getCategoriesFromStore(store.storeId)
-  // .then(categories => {
-  //   setCategories(categories)
-  // })
+  getCategoriesFromStore(store.storeId)
+  .then(categories => {
+    setCategories(categories)
+  })
 }, [])
 return (
     <View style={styles.container}>
