@@ -7,7 +7,7 @@ import SearchComponent from '../components/SearchComponent'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { categories, dataTest, filterData } from '../data'
 import List from '../components/List'
-import { Menu } from '../components/home/HomeHeader'
+import { Store } from '../components/home/HomeHeader'
 const SCREEN_WIDTH = Dimensions.get('window').width
 
 export default function SearchScreen({ navigation }) {
@@ -19,7 +19,7 @@ export default function SearchScreen({ navigation }) {
       flex: 1,
     }}>
       <View style={styles.header}>
-        <Menu navigation={navigation} />
+        <Store navigation={navigation} />
         <SearchComponent
           searchPhrase={searchPhrase}
           setSearchPhrase={setSearchPhrase}

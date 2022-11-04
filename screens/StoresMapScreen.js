@@ -192,9 +192,9 @@ const StoreMarkers = ({ storeData, focus, setFocusFunction, storesRef, visible, 
 }
 const ListButton = ({ setVisible }) => {
   return (
-    <View style={styles.menuList}>
-      <View style={styles.menuListBloc}>
-        <Icon type="material-community" name='menu' color="black" size={32}
+    <View style={styles.storeList}>
+      <View style={styles.storeListBloc}>
+        <Icon type="material-community" name='store' color="black" size={32}
           onPress={() => setVisible(true)} />
         <Text style={{ fontWeight: "bold" }}>List</Text>
       </View>
@@ -272,12 +272,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 50,
     paddingVertical: 50,
   },
-  menuList: {
+  storeList: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "flex-end",
   },
-  menuListBloc: {
+  storeListBloc: {
     backgroundColor: "white",
     width: 70,
     flexDirection: "row",

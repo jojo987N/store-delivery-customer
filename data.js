@@ -776,7 +776,7 @@ export const stores = [
 
 
 
-export const menuDetailedData =[
+export const storeDetailedData =[
   { 
     meal:"Big Mac",
     price:70.20,

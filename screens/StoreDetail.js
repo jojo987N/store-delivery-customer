@@ -2,7 +2,7 @@ import { View, Text, Modal, ImageBackground, StyleSheet, Animated, TouchableOpac
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import About from '../components/storeDetail/About'
 import { Divider } from 'react-native-elements'
-import MenuItems from '../components/storeDetail/MenuItems'
+import StoreItems from '../components/storeDetail/StoreItems'
 import ViewCart from '../components/storeDetail/ViewCart'
 import BottomSheet, { BottomSheetScrollView } from '@gorhom/bottom-sheet'
 import grey1 from '../global'
@@ -177,7 +177,7 @@ export default function StoreDetail({ route, navigation }) {
         >
 
 
-          <MenuItems foodsRef={foodsRef} route={route} navigation={navigation} userLocation={userLocation}
+          <StoreItems foodsRef={foodsRef} route={route} navigation={navigation} userLocation={userLocation}
             mapRef={mapRef} apikey={apikey} activeTab={activeTab}
             pickup={pickup} delivery={delivery} setActiveTab={setActiveTab}
             scrollEnabled={scrollEnabled} setScrollEnabled={setScrollEnabled}

@@ -101,7 +101,7 @@ export default function OrderRequest({navigation, route}) {
        { driverLat && driverLng && !local ?<DisplayMapviewDirections apikey={apikey} toLat={lat} toLng={lng} fromLat={driverLat} fromLng={driverLng} 
        setTotalMinutes={setTotalMinutes} setTimeLeft={setTimeLeft}/>:<></>}
       </MapView>
-      <NavigationMenu navigation={navigation} />
+      <NavigationStore navigation={navigation} />
 
  
       <BottomSheet ref={bottomSheet} index={1} snapPoints={["12%", "95%"]}
@@ -241,10 +241,10 @@ const AnimationCooking = ({status})=>{
     </View>
   )
 }
-const NavigationMenu = ({ navigation }) => (
+const NavigationStore = ({ navigation }) => (
   
-  <View style={styles.menu}>
-   <Icon type="material-community" name='menu' color="black" size={32} 
+  <View style={styles.store}>
+   <Icon type="material-community" name='store' color="black" size={32} 
    onPress={() => navigation.navigate('Home')} />
 </View>
 )

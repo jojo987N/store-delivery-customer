@@ -10,7 +10,7 @@ import { NavigationContainer } from '@react-navigation/native';
  
 
   const styles = StyleSheet.create({
-    menuItemStyle :{
+    storeItemStyle :{
        flexDirection: "row",
        justifyContent: "space-around",
         margin: 20,     
@@ -23,7 +23,7 @@ import { NavigationContainer } from '@react-navigation/native';
     
 }) 
 
-export default function MenuDetailItems({storeName, foods, hideCheckbox, marginLeft, navigation}) {
+export default function StoreDetailItems({storeName, foods, hideCheckbox, marginLeft, navigation}) {
   const dispatch = useDispatch();
 
   const selectItem = (item, checkboxValue)=> dispatch({
@@ -44,9 +44,9 @@ export default function MenuDetailItems({storeName, foods, hideCheckbox, marginL
 
     {foods.map((food, index)=>(
       <TouchableOpacity key={index}
-        onPress={()=>navigation.navigate('MenuDetailScreen', {title: food.title})}
+        onPress={()=>navigation.navigate('StoreDetailScreen', {title: food.title})}
       >
-      <View style={styles.menuItemStyle}>
+      <View style={styles.storeItemStyle}>
           {hideCheckbox ? (<></>) :(
           
           

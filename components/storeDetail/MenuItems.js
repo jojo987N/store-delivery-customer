@@ -20,7 +20,7 @@ import { FlatList } from 'react-native-gesture-handler';
 import { CategoriesContext } from '../../contexts/CategoriesContext';
 
   const styles = StyleSheet.create({
-    menuItemStyle :{flex: 1,},
+    storeItemStyle :{flex: 1,},
     titleStyle: {
       fontSize: 19,
       fontFamily: "Roboto_500Medium"
@@ -32,7 +32,7 @@ import { CategoriesContext } from '../../contexts/CategoriesContext';
      marginVertical: 10
     }
 }) 
-export default function MenuItems({route, activeTab, marginLeft, navigation, foodsRef,
+export default function StoreItems({route, activeTab, marginLeft, navigation, foodsRef,
 pickup, delivery, setActiveTab, userLocation, mapRef, apikey, scrollEnabled, setScrollEnabled,
 opacity, setCategoriesFood}) {
   const {store} = route.params
@@ -80,7 +80,7 @@ opacity, setCategoriesFood}) {
                renderItem={({item, index})=>{
                 return (
                   <View key={index} >
-               <View style={styles.menuItemStyle}>
+               <View style={styles.storeItemStyle}>
                    <View style={{
                      flexDirection: "row",
                       
@@ -132,7 +132,7 @@ const FoodInfo = (props)=>{
     <TouchableOpacity
       style={{ flex: 3, justifyContent: "center", paddingHorizontal: 10 }}
       onPress={() => {
-        props.navigation.navigate("MenuDetailScreen", { food: props.food, store: props.store })
+        props.navigation.navigate("StoreDetailScreen", { food: props.food, store: props.store })
       }}>
       <Text style={styles.titleStyle}>{props.food.name}</Text>
       <Text>{props.food.description}</Text>

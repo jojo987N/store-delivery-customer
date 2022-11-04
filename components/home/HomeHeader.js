@@ -14,7 +14,7 @@ export default function HomeHeader({navigation}) {
             alignItems: "center",
             justifyContent: "space-between",
           }}>
-             <Menu navigation={navigation}/>
+             <Store navigation={navigation}/>
               <TouchableOpacity onPress={()=>setFilter(true)}>
           
                   <FontAwesome
@@ -31,13 +31,13 @@ export default function HomeHeader({navigation}) {
   )
 }
 
-export const Menu = ({navigation}) => {
+export const Store = ({navigation}) => {
 
     return  <View style={{
      }}>
          <Icon
              type="material-community"
-             name='menu'
+             name='store'
              color="black"
              size={32}
              onPress={()=>navigation.toggleDrawer()}

@@ -3,7 +3,7 @@ import React from 'react'
 import {createStackNavigator} from '@react-navigation/stack'
 import Home from '../screens/Home'
 import StoreDetail from '../screens/StoreDetail'
-import MenuDetailScreen from '../screens/MenuDetailScreen'
+import StoreDetailScreen from '../screens/StoreDetailScreen'
 import MyOrdersScreen from '../screens/MyOrdersScreen'
 import OrderDetails from '../screens/OrderDetails'
 import PreferenceScreen from '../components/PreferenceScreen'
@@ -39,8 +39,8 @@ export function HomeNavigator() {
       
 
       <HomeStack.Screen 
-          name="MenuDetailScreen"
-          component={MenuDetailScreen}
+          name="StoreDetailScreen"
+          component={StoreDetailScreen}
           options={{headerShown: false}}/>
 
       <HomeStack.Screen 

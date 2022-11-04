@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import LottieView from 'lottie-react-native';
-import MenuItems from '../components/storeDetail/MenuItems';
+import StoreItems from '../components/storeDetail/StoreItems';
 
 import { collection, getFirestore, orderBy, limit, onSnapshot, query } from 'firebase/firestore'
 import firebaseApp from '../firebase';

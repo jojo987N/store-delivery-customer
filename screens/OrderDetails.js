@@ -13,7 +13,7 @@ const order = orders[0];
         <View style={styles.container}>
           <Text style={styles.title}>{order.Store.name}</Text>
           <Text style={styles.subtitle}>{order.status} &#8226; 2 days ago</Text>
-          <Text style={styles.menuTitle}>Your orders</Text>
+          <Text style={styles.storeTitle}>Your orders</Text>
         </View>
       </View>
     </View>
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
         marginHorizontal: 15,
     },
-    menuTitle: {
+    storeTitle: {
         marginTop: 10,
         marginHorizontal: 15,
         fontWeight: "bold",

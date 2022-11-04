@@ -2,11 +2,11 @@ import { View, Text, Image, StyleSheet, ScrollView} from 'react-native'
 import React, { useState } from 'react'
 import {language, currency}  from '../global'
 import { CheckBox } from 'react-native-elements'
-import { Quantity } from '../components/storeDetail/MenuItems'
+import { Quantity } from '../components/storeDetail/StoreItems'
 import ViewCart from '../components/storeDetail/ViewCart'
 import DisplayPreferences from '../components/DisplayPreferences'
 import Size from '../components/Size'
-export default function MenuDetailScreen({route}) {
+export default function StoreDetailScreen({route}) {
   const {food, store} = route.params
   const [checkbox1, setCheckbox1] = useState(true)
   const [checkbox2, setCheckbox2] = useState(false)

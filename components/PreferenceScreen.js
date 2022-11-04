@@ -6,7 +6,7 @@ import {
     CheckBox
   } from 'react-native-elements';
 
-  import { menuDetailedData } from '../data';
+  import { storeDetailedData } from '../data';
 
 export default class PreferenceScreen extends Component {
 
@@ -14,15 +14,15 @@ export default class PreferenceScreen extends Component {
           super(props);
 
           this.state ={
-            preference:menuDetailedData[this.props.route.params.index].preferenceData,
-            required:menuDetailedData[this.props.route.params.index].required,
-            minimum_quantity :menuDetailedData[this.props.route.params.index].minimum_quatity,
+            preference:storeDetailedData[this.props.route.params.index].preferenceData,
+            required:storeDetailedData[this.props.route.params.index].required,
+            minimum_quantity :storeDetailedData[this.props.route.params.index].minimum_quatity,
           }
         }
 
     render() {
         const index  = this.props.route.params.index
-        const {meal,details,price} = menuDetailedData[index];
+        const {meal,details,price} = storeDetailedData[index];
         
         
         return (
@@ -75,7 +75,7 @@ export default class PreferenceScreen extends Component {
                      <View>
                        {this.state.preference.map(item=><View key ={item.id}>
                           <View style ={styles.view7}>
-                             <Text style ={styles.text8}>{menuDetailedData[index].preferenceTitle[this.state.preference.indexOf(item)]}</Text>
+                             <Text style ={styles.text8}>{storeDetailedData[index].preferenceTitle[this.state.preference.indexOf(item)]}</Text>
                              {this.state.required[this.state.preference.indexOf(item)] &&
                               <View style ={styles.view9}>
                                   <Text style ={styles.text7}>{this.state.minimum_quantity[this.state.preference.indexOf(item)]} REQUIRED</Text>
