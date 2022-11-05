@@ -16,6 +16,7 @@ let description;
  if(categories)
 description = `⭐${rating} (${review_count}+ ratings) • ${categories[0].name} •${price}• 🎫`
 useEffect(()=> {
+  console.log(store.storeId)
   getCategoriesFromStore(store.storeId)
   .then(categories => {
     setCategories(categories)
