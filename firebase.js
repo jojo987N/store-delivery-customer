@@ -452,6 +452,19 @@ const populateRestaurant = ()=> {
 
 //populateRestaurant()
 
+const storesCol = collection(db, 'stores')
+const fillStores = () => {
+
+  getRestaurantsFromFirebase().then(restaurants => {
+    restaurants.forEach((restaurant)=>{
+      addDoc(storesCol, restaurant)
+      .then(()=>console.log("store added"))
+     })
+  })
+
+}
+
+fillStores()
 
  
 
