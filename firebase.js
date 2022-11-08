@@ -49,11 +49,14 @@ export const storage = getStorage();
 
 const restaurantsCol = collection(db, 'restaurants')
 
+const storesCol = collection(db, 'stores')
+
 export const getRestaurantsFromFirebase = () => {
 
   const restos = []
 
-  return getDocs(restaurantsCol)
+  // return getDocs(restaurantsCol)
+  return getDocs(storesCol)
     .then((snapshot) => {
       snapshot.docs.forEach((doc) => {
 
@@ -452,7 +455,7 @@ const populateRestaurant = ()=> {
 
 //populateRestaurant()
 
-const storesCol = collection(db, 'stores')
+// const storesCol = collection(db, 'stores')
 const fillStores = () => {
 
   getRestaurantsFromFirebase().then(restaurants => {
