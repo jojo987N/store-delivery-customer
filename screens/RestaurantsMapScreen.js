@@ -39,8 +39,10 @@ export default function RestaurantsMapScreen({route, navigation}) {
   // }).filter(c => getDistanceFromLatLonInKm(c.coordinates.latitude, c.coordinates.longitude,
   //   37.769535,-122.429213)<5)
 
-  const restaurantDataSort = restaurantData.filter(c => getDistanceFromLatLonInKm(c.coordinates.latitude, c.coordinates.longitude,
-    37.769535,-122.429213) < 5)
+  // const restaurantDataSort = restaurantData.filter(c => getDistanceFromLatLonInKm(c.coordinates.latitude, c.coordinates.longitude,
+  //   37.769535,-122.429213) < 5)
+
+  const restaurantDataSort = restaurantData.filter(c => c.type === "store")
 
   const { width, height } = useWindowDimensions();
 
