@@ -134,7 +134,7 @@ export default function Home({navigation}) {
        {city?<RestaurantItems restaurantData={restaurantData.filter(restaurant => restaurant.location.city === city)} navigation={navigation}  size="100%"/>
           :
         <ScrollView showsVerticalScrollIndicator={false}>
-          <Categories />
+          {/* <Categories /> */}
 
           <RestaurantItems restaurantData={restaurantData} reward="$60 until $9 reward" navigation={navigation} size="100%" horizontal={true}/>
         
