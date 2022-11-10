@@ -163,7 +163,7 @@ const RestaurantRowsItems = ({themes, restaurantData, navigation}) => {
         <View key={index}>
           <View style={styles.row}>
             <Text style={styles.rowsTitle}>{theme}</Text>
-            <RestaurantItems restaurantData={restaurantData.filter(restaurant => restaurant.theme === theme)} navigation={navigation} horizontal={true} />
+            <RestaurantItems restaurantData={restaurantData.filter(restaurant => restaurant.theme === theme && restaurant.type === "store")} navigation={navigation} horizontal={true} />
           </View>
         </View>
       
