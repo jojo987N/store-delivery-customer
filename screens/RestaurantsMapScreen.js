@@ -288,7 +288,7 @@ Categories, scrollEnabled, offset, setOffset, direction, setDirection, setScroll
     }:()=>{}}
   
     ListHeaderComponent={!horizontal?()=><View style={styles.categories}>
-      <Categories />
+      {/* <Categories /> */}
       </View>:<></>}
           
       />
